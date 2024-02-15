@@ -1,0 +1,10 @@
+@GetMapping("/{hotelName}")
+    public ResponseEntity<Hotel> findHotelByName(@PathVariable String hotelName) {
+        Hotel hotel = hotelService.findByName(hotelName);
+        if (hotel != null) {
+            return new ResponseEntity<>(hotel, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+	
+	}

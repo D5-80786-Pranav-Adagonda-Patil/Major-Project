@@ -1,0 +1,9 @@
+@PutMapping("/{updateHotel}")
+    public ResponseEntity<String> updateHotel(@PathVariable String hotelName, @RequestBody Hotel updatedHotel) {
+        try {
+            hotelService.updateHotel(hotelName, updatedHotel);
+            return new ResponseEntity<>("Hotel updated successfully", HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+	}
